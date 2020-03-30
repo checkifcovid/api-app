@@ -1,5 +1,36 @@
 # FindTheCluster API App
 
+## Report Endpoint
+Use this endpoint to submit self-reported symptoms
+
+**Request**
+
+`POST /reports`
+
+**Payload**
+```
+{
+ report_source: "survey_app",
+ gender: "Female",
+ age: "54",
+ postcode: "07093",
+ country: "USA",
+ symptoms: {
+   fever: "False",
+   cough: "True",
+   runny_nose: "false"},
+   travel: ["Italy","France"]
+  }
+}
+```
+
+**Response**
+```
+{
+  status: 200
+}
+```
+
 ## Probability Endpoint (coming soon)
 Get the probability of a COVID-19 positive based on parameters
 
