@@ -58,7 +58,7 @@ Get the probability of a COVID-19 positive based on parameters
 **Response**
 ```
 {
-  status: 200
+  status: 'positive',
   result: 0.8
 }
 ```
