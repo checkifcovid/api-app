@@ -1,11 +1,44 @@
-# Find the Cluster Api-App
+# FindTheCluster API App
 
+## Probability Endpoint (coming soon)
+Get the probability of a COVID-19 positive based on parameters
+
+**Request**
+
+`POST /reports`
+
+**Payload**
+```
+{
+ report_source: "survey_app",
+ gender: "Female",
+ age: "54",
+ postcode: "07093",
+ country: "USA",
+ symptoms: {
+   fever: "False",
+   cough: "True",
+   runny_nose: "false"},
+   travel: ["Italy","France"]
+  }
+}
+```
+
+**Response**
+```
+{
+  status: 200
+  result: 0.8
+}
+```
+
+
+## Technical Details
 Below are the specifications for making a POST call to the API from the clients. 
 
 Steps to follow:
 
 1. Get the API Key to make the calls in a secured manner.
-
 2. Use the below url to make POST calls. (GET/PUT in Progress)
 
 | Method | CRUD |Environment | API Link |
