@@ -1,0 +1,26 @@
+name: deploy to lambda
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy_to_lambda:
+    name: build and deploy lambda
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+    runs-on: ${{matrix.platform}}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install zip
+        run: sudo apt install zip
+      - name: create api zip bundle
+        run: zip -qq -rj ./bundle.zip ./lambda/api-dynamodb-ingest.py
+      - name: deploy api
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-2
+          function_name: findthecluster-surveyapp-dynamo-ingest
+          zip_file: bundle.zip
