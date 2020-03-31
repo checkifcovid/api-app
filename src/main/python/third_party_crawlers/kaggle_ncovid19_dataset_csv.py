@@ -8,8 +8,10 @@ from resource_urls import *
 from utils.csv_utils import write_dict_to_csv_file
 from symptom_parser import SymptomParser
 
-header_fields = ['ID', 'report_date', 'age', 'gender', 'city', 'country', 'latitude', 'longitude', 'symptoms', 'report_source', 'travel_history']
-csv_output_filename = 'kaggle_ncovid19-dataset_20200329.csv'
+header_fields = ['id', 'report_date', 'age', 'gender', 'city', 'country', 'latitude', 'longitude', 'symptoms', 'report_source', 'travel_history']
+csv_output_filename = './clean_data.csv'
+input_filename = '../../../../data-sets/kaggle_ncovid19-dataset.csv'
+
 
 def parse_field(key, value):
     symptom_parser = SymptomParser()
@@ -23,6 +25,10 @@ def parse_field(key, value):
     elif key == 'country' or key == 'country_new':
         if value != '':
             return 'country', value
+    elif key == 'ID':
+        return 'id', value
+    elif key == 'sex':
+        return 'gender', value
     elif key == 'source':
         return 'report_source', value
     elif key == 'date_confirmation':
@@ -30,6 +36,7 @@ def parse_field(key, value):
     elif key in header_fields:
         return key, value
     return None, None
+
 
 def parse_data(f):
     res = []
@@ -47,13 +54,10 @@ def parse_data(f):
     return res
 
 def process_csv_data():
-
-    with open('../../../../data-sets/kaggle_ncovid19-dataset.csv', encoding='utf-8-sig') as f:
+    with open(input_filename, encoding='utf-8-sig') as f:
         parsed_data = parse_data(f)
 
     write_dict_to_csv_file(csv_output_filename, header_fields, parsed_data)
 
-
-print(path)
-
 process_csv_data()
+
