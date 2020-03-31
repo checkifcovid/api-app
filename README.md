@@ -1,7 +1,16 @@
-# FindTheCluster API App
+# FindTheCluster API
 
-## Report Endpoint
-Use this endpoint to submit self-reported symptoms
+This is a set of endpoints that can be used to access the data. Currently, **Survey App** is the only client but access can be extended to third-party apps.
+
+Endpoint URL: https://komyfif1zd.execute-api.us-east-2.amazonaws.com/dev1/reports
+
+## How to get access
+Reach out to us at #proj-findthecluster to request for an API key
+
+
+---
+###  Report Endpoint
+Use this endpoint to submit self-reported symptoms.
 
 **Request**
 
@@ -31,8 +40,10 @@ Use this endpoint to submit self-reported symptoms
 }
 ```
 
-## Probability Endpoint (coming soon)
-Get the probability of a COVID-19 positive based on parameters
+---
+
+### Probability Endpoint (coming soon)
+Get the probability of a COVID-19 positive given some parameters. 
 
 **Request**
 
@@ -62,9 +73,9 @@ Get the probability of a COVID-19 positive based on parameters
   result: 0.8
 }
 ```
+---
 
-
-## Technical Details
+### Technical Details
 Below are the specifications for making a POST call to the API from the clients. 
 
 Steps to follow:
