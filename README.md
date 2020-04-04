@@ -18,18 +18,21 @@ Use this endpoint to submit self-reported symptoms.
 
 **Payload**
 ```
-{
- report_source: "survey_app",
- gender: "Female",
- age: "54",
- postcode: "07093",
- country: "USA",
- symptoms: {
-   fever: "False",
-   cough: "True",
-   runny_nose: "false"},
-   travel: ["Italy","France"]
-  }
+{"survey_id": "001",
+ "user_id": "12345678"
+ "report_date": "2020-03-27 12:00:00",
+ "report_source": "survey_app",
+ "gender": "Female",
+ "age": "54",
+ "postcode": "07093",
+ "country": "United States of America",
+ "country_code" : "USA"           
+ "symptoms": {
+ "fever": "False",
+ "cough": "True",
+ "runny_nose": "false"},
+  "travel": [{"country":"Italy","travel_start_date":"2020-03-01", "travel_end_date":"2020-03-26"},   
+             {"country":"France","travel_start_date":"2020-03-27", "travel_end_date":"2020-03-31"}]
 }
 ```
 
@@ -51,18 +54,21 @@ Get the probability of a COVID-19 positive given some parameters.
 
 **Payload**
 ```
-{
- report_source: "survey_app",
- gender: "Female",
- age: "54",
- postcode: "07093",
- country: "USA",
- symptoms: {
-   fever: "False",
-   cough: "True",
-   runny_nose: "false"},
-   travel: ["Italy","France"]
-  }
+{"survey_id": "001",
+ "user_id": "12345678"
+ "report_date": "2020-03-27 12:00:00",
+ "report_source": "survey_app",
+ "gender": "Female",
+ "age": "54",
+ "postcode": "07093",
+ "country": "United States of America",
+ "country_code" : "USA"           
+ "symptoms": {
+ "fever": "False",
+ "cough": "True",
+ "runny_nose": "false"},
+  "travel": [{"country":"Italy","travel_start_date":"2020-03-01", "travel_end_date":"2020-03-26"},
+             {"country":"France","travel_start_date":"2020-03-27", "travel_end_date":"2020-03-31"}]
 }
 ```
 
