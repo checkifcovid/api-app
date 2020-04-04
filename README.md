@@ -14,7 +14,7 @@ Use this endpoint to submit self-reported symptoms.
 
 **Request**
 
-`POST /reports`
+`POST /survey`
 
 **Payload**
 ```
@@ -47,7 +47,7 @@ Get the probability of a COVID-19 positive given some parameters.
 
 **Request**
 
-`POST /reports`
+`POST /stats`
 
 **Payload**
 ```
