@@ -2,7 +2,7 @@
 
 This is a set of endpoints that can be used to access the data. Currently, **Survey App** is the only client but access can be extended to third-party apps.
 
-Endpoint URL: https://komyfif1zd.execute-api.us-east-2.amazonaws.com/dev1/reports
+Endpoint URL: https://28geu7g1z5.execute-api.us-east-2.amazonaws.com/dev
 
 ## How to get access
 Reach out to us at #proj-findthecluster to request for an API key
@@ -19,27 +19,29 @@ Use this endpoint to submit self-reported symptoms.
 **Payload**
 ```
 {"survey_id": "001",
- "user_id": "12345678"
+ "user_id": "12345678",
  "report_date": "2020-03-27 12:00:00",
  "report_source": "survey_app",
  "gender": "Female",
  "age": "54",
  "postcode": "07093",
  "country": "United States of America",
- "country_code" : "USA"           
+ "country_code" : "USA",
  "symptoms": {
  "fever": "False",
  "cough": "True",
  "runny_nose": "false"},
-  "travel": [{"country":"Italy","travel_start_date":"2020-03-01", "travel_end_date":"2020-03-26"},   
-             {"country":"France","travel_start_date":"2020-03-27", "travel_end_date":"2020-03-31"}]
+  "travel": [{"country":"Italy","travel_start_date":"2020-03-01", "travel_end_date":"2020-03-26"},{"country":"France","travel_start_date":"2020-03-27", "travel_end_date":"2020-03-31"}]
 }
 ```
 
 **Response**
 ```
 {
-  status: 200
+  statusCode: 200,
+  user_id: xxxx,
+  survey_id: yyyy,
+  msg: 'Form Submitted'
 }
 ```
 
@@ -55,28 +57,29 @@ Get the probability of a COVID-19 positive given some parameters.
 **Payload**
 ```
 {"survey_id": "001",
- "user_id": "12345678"
+ "user_id": "12345678",
  "report_date": "2020-03-27 12:00:00",
  "report_source": "survey_app",
  "gender": "Female",
  "age": "54",
  "postcode": "07093",
  "country": "United States of America",
- "country_code" : "USA"           
+ "country_code" : "USA",
  "symptoms": {
  "fever": "False",
  "cough": "True",
  "runny_nose": "false"},
-  "travel": [{"country":"Italy","travel_start_date":"2020-03-01", "travel_end_date":"2020-03-26"},
-             {"country":"France","travel_start_date":"2020-03-27", "travel_end_date":"2020-03-31"}]
+  "travel": [{"country":"Italy","travel_start_date":"2020-03-01", "travel_end_date":"2020-03-26"},{"country":"France","travel_start_date":"2020-03-27", "travel_end_date":"2020-03-31"}]
 }
 ```
 
 **Response**
 ```
 {
-  status: 'positive',
-  result: 0.8
+  statusCode: 200,
+  Diagnose: 'Positive',
+  probability: 0.8,
+  msg: 'Probability Calculated'
 }
 ```
 ---
@@ -89,40 +92,18 @@ Steps to follow:
 1. Get the API Key to make the calls in a secured manner.
 2. Use the below url to make POST calls. (GET/PUT in Progress)
 
-| Method | CRUD |Environment | API Link |
-| :---         |     :---:      | :--- |:--- |
-| POST   | Update/Replace   |DEV| https://komyfif1zd.execute-api.us-east-2.amazonaws.com/dev1/reports  |
+| Endpoint | Method | CRUD |Environment | API Link |
+| :---    |:---         |     :---:      | :--- |:--- |
+| /surver | POST   | Update/Replace   |DEV| https://28geu7g1z5.execute-api.us-east-2.amazonaws.com/dev/survey  |
+| /stats  | POST   | Update/Replace   |DEV| https://28geu7g1z5.execute-api.us-east-2.amazonaws.com/dev/stats  |
 
 
 
 3. Example curl Call format:
 ```sql
-curl -X POST https://komyfif1zd.execute-api.us-east-2.amazonaws.com/dev1/reports -H 'x-api-key:********' -H "Content-Type: application/json" 
--d '{"report_date": "2020-03-23 16:00:00", "report_source": "survey_app", "gender": "male","age": "29", "postcode": "122017","country": "USA","symptoms": {"fever": "true","cough": "false","runny_nose": "false"},"travel": ["London"]}'
+curl -X POST https://28geu7g1z5.execute-api.us-east-2.amazonaws.com/dev/survey -H 'x-api-key:*******' -H "Content-Type: application/json" -d '{"survey_id": "001","user_id": "12345680","report_date": "2020-03-30 16:00:00", "report_source": "survey_app", "gender": "female","age": "29", "postcode": "122017","country": "INDIA", "country_code" : "INDIA","symptoms": {"fever": "true","cough": "false","runny_nose": "false"},"travel": [{"country":"Italy","travel_start_date":"2020-03-01", "travel_end_date":"2020-03-26"},{"country":"France","travel_start_date":"2020-03-27", "travel_end_date":"2020-03-31"}]}'
 ```
 
-Payload:(Finalize with Survey Team)
-
-```js
-
-{"report_date": "2020-03-27 12:00:00",
- "report_source": "survey_app",
- "gender": "Female",
- "age": "54",
- "postcode": "07093",
- "country": "USA",
- "symptoms": {
- "fever": "False",
- "cough": "True",
- "runny_nose": "false"},
-  "travel": ["Italy","France"]
-}
-```
-
-Response text (WIP): 
-```
-Status code 200
-```
 
 ## Support
 
