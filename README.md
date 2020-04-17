@@ -1,4 +1,4 @@
-# FindTheCluster API
+# CheckIfCovid API
 
 This is a set of endpoints that can be used to access the data. Currently, **Survey App** is the only client but access can be extended to third-party apps.
 
