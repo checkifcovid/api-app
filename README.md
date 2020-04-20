@@ -94,7 +94,7 @@ Steps to follow:
 
 | Endpoint | Method | CRUD |Environment | API Link |
 | :---    |:---         |     :---:      | :--- |:--- |
-| /surver | POST   | Update/Replace   |DEV| https://28geu7g1z5.execute-api.us-east-2.amazonaws.com/dev/survey  |
+| /survey | POST   | Update/Replace   |DEV| https://28geu7g1z5.execute-api.us-east-2.amazonaws.com/dev/survey  |
 | /stats  | POST   | Update/Replace   |DEV| https://28geu7g1z5.execute-api.us-east-2.amazonaws.com/dev/stats  |
 
 
