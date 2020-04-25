@@ -1,2 +1,2 @@
-import sys
-sys.path.append('../')
+from sys import path
+path.append('../utils/')

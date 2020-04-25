@@ -1,5 +1,6 @@
 from sys import path
 path.append('../')
+path.append('../../../../')
 
 import csv
 
@@ -10,6 +11,7 @@ from symptom_parser import SymptomParser
 header_fields = ['id', 'report_date', 'age', 'gender', 'city', 'country', 'latitude', 'longitude', 'symptoms', 'report_source', 'travel_history']
 csv_output_filename = './clean_data.csv'
 input_filename = '../../../../data-sets/kaggle_ncovid19-dataset.csv'
+
 
 def parse_field(key, value):
     symptom_parser = SymptomParser()
@@ -33,7 +35,8 @@ def parse_field(key, value):
         return 'report_date', value
     elif key in header_fields:
         return key, value
-    return '', ''
+    return None, None
+
 
 def parse_data(f):
     res = []
@@ -43,6 +46,8 @@ def parse_data(f):
         item = {}
         for k, v in row.items():
             new_key, new_value = parse_field(k, v)
+            if new_key is None:
+                continue
             item[new_key] = new_value
         res.append(item)
 
@@ -54,5 +59,5 @@ def process_csv_data():
 
     write_dict_to_csv_file(csv_output_filename, header_fields, parsed_data)
 
-
 process_csv_data()
+

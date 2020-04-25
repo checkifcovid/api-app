@@ -1,4 +1,4 @@
-import csv 
+import csv
 
 def write_dict_to_csv_file(filename, header_fields, data):
     with open(filename, 'w') as csv_file:
